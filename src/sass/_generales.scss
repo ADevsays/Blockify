@@ -1,0 +1,49 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+@use 'sass:list';
+
+.center{
+    @include center();
+}
+
+.d-flex{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.f-column{
+    @extend .center;
+    flex-direction: column;
+}
+
+.font{
+    @include text-gradient($secondary, $primary, 45deg, 0%);
+    font-family: $base_font;
+}
+
+
+
+//Create margin dinamic
+
+$sizes: 0.25, 0.5, 1, 1.5, 3;
+
+
+@for $i from 1 through list.length($sizes){
+    $spacer: nth($sizes, $i);
+    .m-#{$i}{
+        margin: 1rem * $spacer;
+    }
+    .mt-#{$i}{
+        margin-top: 1rem * $spacer;
+    }
+    .mb-#{$i}{
+        margin-bottom: 1rem * $spacer;
+    }
+    .me-#{$i}{
+        margin-right: 1rem * $spacer;
+    }
+    .mr-#{$i}{
+        margin-left: 1rem * $spacer;
+    }
+}

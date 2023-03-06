@@ -1,0 +1,87 @@
+@mixin reset(){
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin bgImg($img){
+    background-image: url($img);
+    background-position: center;
+    background-size: cover;
+}
+
+@mixin measures($w:100%, $h:100%){
+    width: $w;
+    height: $h;
+}
+
+@mixin center($direction: row, $justify: center){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin text-gradient($first_color, $second_color, $deg:90deg, $porcent: 30%){
+    background: -webkit-linear-gradient($deg, $first_color $porcent, $second_color);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+@mixin button($bg-color, $color, $border: transparent, $hover: transparent){
+    color: $color;
+    background-color: $bg-color;
+    min-width: 220px;
+    box-sizing: content-box;
+    border-radius: 12px;
+    padding: 12px;
+    border: 2px solid $border;
+    font-weight: bold;
+    transition: background 0.2s ease;
+    &:hover{
+        cursor: pointer;
+        opacity: .9;
+        @if($hover != transparent){
+            background-color: $hover;
+        }
+    }
+}
+
+@mixin media-point($point){
+    @media (max-width:$point){
+        @content;
+    }
+}
+
+@mixin animation($name, $time, $curve:ease, $type:alternate, $repeat:infinite){
+    &{
+        animation: $name $time $curve $type $repeat;
+    }
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+@mixin border-linear-gradient($border-width, $colors-list, $bg-color: #202020){
+    &{
+        position: relative;
+        border-radius: $border-width;
+        background-color: $bg-color;
+        border-radius: 12px;
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        top: calc(-1 *  $border-width);
+        left: calc(-1 *  $border-width);
+        height: calc(100% +  $border-width * 2);
+        width: calc(100% +  $border-width * 2);
+        background: linear-gradient(60deg,  $colors-list);
+        // border-radius: calc(2 *  $border-width);
+        z-index: -1;
+        border-radius: 12px;
+        background-size: 300% 300%;
+    }
+}

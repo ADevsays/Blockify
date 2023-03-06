@@ -1,0 +1,50 @@
+@use 'mixins' as *;
+@use 'variables' as v;
+@use 'functions'as *;
+
+.container .content{
+    @include center(column);
+    // height: 50vh;
+    width: 50%;
+    font-family: v.$base_font;
+    @include media-point(media('lg')){
+        &, & h1, & p{
+            width: 100%;
+        }
+        h1{
+            margin-top: v.$fixed * 2;
+        }
+    }
+    .img_examples{
+        padding: v.$fixed;
+        img{
+            object-fit: cover;
+            border-radius: v.$fixed
+        }
+
+        @include measures(90%, 300px);
+        @include media-point(media('xl')){
+            @include measures(100%, auto);
+        }
+    }
+    h1{
+        // width: 50%;
+        text-align: center;
+        @include text-gradient(v.$secondary, v.$primary, 45deg, 0%);
+        text-transform: capitalize;
+        font-size: 3em;
+        @include media-point(media('sm')){
+            font-size: 2em;
+        }
+
+    }
+    p{
+        line-height: 30px;
+        margin-top:v.$fixed * 2;
+        color: v.$gray;
+        text-align: center;
+        font-size: 1.1em;
+        padding:0 v.$fixed * 3;
+    }
+    
+}

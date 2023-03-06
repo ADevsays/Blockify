@@ -1,0 +1,42 @@
+@forward 'header';
+@forward 'button';
+@forward 'content';
+@forward 'form';
+@forward 'spinner';
+@forward 'file-user-container';
+@forward 'generales';
+@forward 'inputs';
+@forward 'set-values';
+@forward 'canvas';
+@use 'mixins' as *;
+@use 'variables' as *;
+
+*{
+    @include reset();
+}
+
+body{
+    margin: 0 $fixed * 2;
+    background-color: $bg-color;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+img{
+    @include measures();
+}
+
+.container{
+    @include measures($h:100vh);
+    .container-flex{
+        @include center($justify: space-evenly);
+        // flex-grow: 2;
+        // border: 2px solid red;
+        flex-wrap: wrap;
+        padding-top: 50px;
+        gap: 20px;
+    }
+
+}

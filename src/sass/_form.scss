@@ -1,0 +1,55 @@
+@use 'mixins' as *;
+@use 'variables' as v;
+@use 'functions' as *;
+
+.container .form{
+    @include center(column);
+    font-family: v.$base_font;
+    div{display: none;}
+
+    label{
+        // pointer-events: none !important;
+        position: relative;
+        &.draggable{
+            border: none;
+            color: white;
+            @include border-linear-gradient(v.$border-width, v.$border-linear-colors);
+            &:after{
+                @include animation(border-gradient, 3s){
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
+                }      
+            }
+        }
+        @include measures(v.$dropzoneM, CDM(v.$dropzoneM));
+        @include center(column);
+        color: v.$gray;
+        border: 2px dashed white;
+        border-radius: 12px;
+        @include media-point(media('sm')){
+            h3{
+                font-size: 1em;
+            }
+            @include measures(350px, 200px);
+        }
+        h3{
+            margin-top: v.$fixed;
+        }
+        span{
+            font-size: 3em;
+            margin-top: v.$fixed;
+        }
+        input{
+            opacity: 0;
+            @include measures();
+            position: absolute;
+        }
+    }
+}

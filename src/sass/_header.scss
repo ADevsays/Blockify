@@ -1,0 +1,52 @@
+@use 'variables' as v;
+@use 'mixins' as *;
+@use 'functions' as *;
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@700&family=Oswald:wght@700&display=swap');
+
+.container header{
+    padding: v.$fixed * 2;
+    @include center($justify: space-between);
+    border-bottom: 1px solid v.$gray;
+    .logo{
+        font-family: v.$font;
+        border: 3px solid v.$primary;
+        border-radius: 7px;
+        padding: v.$fixed;
+        min-width: 220px;
+        max-height: 80px;
+        display: inline-block;
+        font-size: 3em;
+        color: #cecaca;
+        position: relative;
+        @include center();
+        .text{
+            margin-top: -(v.$fixed) / 2;
+            display: flex;
+            p{
+               @include text-gradient(v.$primary, v.$secondary, 45deg);
+            }
+        }
+        span:not(.text span){
+            font-size: 12px;
+            background-color: v.$bg-color;
+            position: absolute;
+            right: 20px;
+            bottom: -8px;
+        }
+    }
+
+    @include media-point(media('sm')){
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        & .logo{
+            font-size: 2em;
+            @include center();
+        }
+        button{
+            margin-top: 20px;
+            min-width: 180px;
+        }
+    }
+
+}

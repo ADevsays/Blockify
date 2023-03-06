@@ -1,0 +1,22 @@
+@use 'mixins' as *;
+@use 'variables' as v;
+
+.btn{
+    @include center();
+    gap: v.$fixed;
+    font-family: v.$base_font;
+    font-size: .9em;
+    span{
+        font-size: 2em;
+    }
+    &-primary{
+        @extend .btn;
+        @include button(v.$bg-color, white, v.$primary, v.$primary);
+    }
+
+    &-secondary{
+        @extend .btn;
+        @include button(v.$bg-color, white, v.$secondary, v.$secondary);
+    }
+
+}

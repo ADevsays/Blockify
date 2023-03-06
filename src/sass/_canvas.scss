@@ -1,0 +1,27 @@
+.canvas-container{
+    position: relative;
+    margin: 1rem 0;
+    cursor: default !important;
+    div img{
+        min-height: 0px !important;
+        margin-bottom: 0 !important;
+    }
+    
+    canvas{
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+   
+} 
+.dontPixel{
+    div{
+        cursor: default !important;
+    }
+    div:not(div:first-child) {
+        display: none;
+    }
+}

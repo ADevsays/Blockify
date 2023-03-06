@@ -1,0 +1,24 @@
+@use 'mixins' as *;
+@use 'variables' as v;
+
+.container .file-user-container{
+    @include center();
+    padding-top: 100px;
+    align-items: flex-start;
+    .img_container{
+        @include measures(650px, 450px);
+        @include center(column);
+        position: relative;
+        p{
+            position: absolute;
+            font-family: v.$base_font;
+            font-weight: bold;
+            color: white;
+        }
+        img, .img{
+            min-height: 400px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+@use 'functions' as *;
+.container-inputs{
+    width: 100%;
+    align-items: flex-end;
+    padding: 12px 30px;
+    .description{
+        width: 100%;
+        color: white;
+        font-family: $base_font;
+        font-weight: bold;
+        font-size: .9em;
+        opacity: 0.8 !important;
+        justify-self: flex-start;
+        text-align: left;
+        padding: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        & span{
+            @include center();
+        }
+    }
+    .d-flex{
+        @include media-point(media('sm')){
+            flex-wrap: wrap;
+           
+        }
+    }
+    .slider-container{
+        @include center($justify: space-between);
+        gap: 5px;
+        font-family: $base_font;
+        font-weight: bold;
+        .range-p{
+            color: $primary;
+            opacity: .9;
+            font-size: .8em;
+        }
+    }
+
+    .switch-container{
+        @include center();
+        .isFace-p{
+            color: white;
+            font-weight: bold; 
+            opacity: .9;
+            font-size: .8em;
+            font-family: $base_font;
+        }
+    }
+}

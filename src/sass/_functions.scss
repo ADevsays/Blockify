@@ -1,0 +1,10 @@
+@use 'variables' as v;
+
+@function media($key){
+    @return map-get(v.$media-queries, $key);
+}
+
+@function CDM($measures){
+    //Calculate the dropzone measeures
+    @return $measures - 200px;
+}
